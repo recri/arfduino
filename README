@@ -1,0 +1,5 @@
+Arfduino is audio and radio code for arduinos and arduino derivatives.
+
+Eventually we'll build an amateur radio transceiver based on an arduino,
+but for the moment we'll just collect useful snippets and libraries that
+might come in handy.
