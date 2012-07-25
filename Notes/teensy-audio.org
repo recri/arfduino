@@ -1,0 +1,24 @@
+* Make a TEENSY atmega32u4 into an audio/midi/dg8saq device.
+** Take the audio device class and see if a TEENSY can deliver
+   24 bits/channel, 2 channels, in/out, 48000 samples/second
+   simply pumping incoming bytes through an unconnected SPI
+   interface.
+** If so, then figure out how to build a duplex SPI<->I2S translator
+   out of a CPLD and connect up the CS4270 codec.
+** Port the avrsoftrock code over to the TEENSY
+   making a pin assignment that plugs directly into the Softrock
+   ATTINY socket.
+*** Ignore the USB D+/D- pins for the moment, because that will
+   require a board which exposes D+/D- which the TEENSY and the
+   AdafruitU4 don't.
+** Take the midi device class and use it to send key and ptt
+   note on/off.
+** Combine the audio streaming endpoints and the midi streaming
+   endpoints with the dg8saq control channel.
+** Voila - a piggy back that delivers softrock control, audio
+   streaming I/Q for receive and transmit, and asynchronous
+   MIDI events for keying.
+* Oops, won't work, the atmega32u4 only supports endpoints with
+  certain sizes of buffer, and only one buffer is large enough
+  to support 16bit stereo at 48kHz, the others are too small.
+  So no buffers will support 24bit stereo

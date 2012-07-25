@@ -1,0 +1,27 @@
+* Arfduino is audio and radio code for arduinos and arduino derivatives.
+  Eventually we may build an amateur radio transceiver based on an arduino.
+
+  But for the moment we'll just collect useful snippets and libraries that
+  might come in handy.
+
+** SlowJitteredI2C
+   I2C communication is used all over the place in digital radios to set the
+   frequency of oscillators, read power sensors, and select digital switches.
+   But it's really annoying when the I2C clock becomes audible on the radio
+   receiver. But I2C doesn't require a fast regular clock to operate, it can
+   use a totally random clock, that operates as slowly as you like, and
+   probably becomes totally invisible to the radio circuits.
+
+   The SlowJitteredI2C sketch implements I2C in software with a slow jittered
+   I2C clock so you can test whether the peripherals still work and whether the
+   the I2C can be made non-interfering.
+
+** MarkerGenerator
+   Building a radio receiver, hooking it up to antenna, and hearing nothing
+   means that there's nothing to hear or that your radio is broken.  It's
+   hard to distinguish the two without a second receiver or a signal generator.
+   
+   The MarkerGenerator sketch uses an Arduino timer to generate a variety of
+   frequencies and their harmonics.  Bring a wire plugged into the Arduino
+   output close to your antenna and you should be able to see or hear the
+   harmonics on your receiver.
